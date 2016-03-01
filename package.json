@@ -1,0 +1,52 @@
+{
+  "name": "hyperscript-string",
+  "version": "0.1.0",
+  "description": "Create HTML strings with JavaScript",
+  "main": "src/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joakimbeng/hyperscript-string.git"
+  },
+  "keywords": [
+    "web",
+    "app"
+  ],
+  "author": {
+    "name": "Joakim Carlstein",
+    "email": "joakim@beng.se",
+    "url": "http://joakim.beng.se"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joakimbeng/hyperscript-string/issues"
+  },
+  "homepage": "https://github.com/joakimbeng/hyperscript-string#readme",
+  "xo": {
+    "envs": [
+      "node"
+    ]
+  },
+  "devDependencies": {
+    "ava": "^0.12.0",
+    "xo": "^0.12.1"
+  },
+  "dependencies": {
+    "arrify": "^1.0.1",
+    "classnames": "^2.2.3",
+    "is-plain-object": "^2.0.1",
+    "promise-all": "^1.0.0",
+    "void-elements": "^2.0.1"
+  },
+  "pj2md": {
+    "related": [
+      "hyperscript-helpers",
+      "hyperscript"
+    ]
+  }
+}
