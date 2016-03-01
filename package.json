@@ -14,8 +14,10 @@
     "url": "git+https://github.com/joakimbeng/hyperscript-string.git"
   },
   "keywords": [
-    "web",
-    "app"
+    "hyperscript",
+    "string",
+    "helper",
+    "html"
   ],
   "author": {
     "name": "Joakim Carlstein",
