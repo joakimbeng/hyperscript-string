@@ -42,11 +42,11 @@
     "arrify": "^1.0.1",
     "classnames": "^2.2.3",
     "is-plain-object": "^2.0.1",
-    "promise-all": "^1.0.0",
     "void-elements": "^2.0.1"
   },
   "pj2md": {
     "related": [
+      "hyperscript-string-async",
       "hyperscript-helpers",
       "hyperscript"
     ]

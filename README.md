@@ -41,6 +41,7 @@ Empty strings are left as is, e.g. `h('a', {href: ''}) => '<a href=""></a>'`, an
 
 ## Related packages
 
+* [`hyperscript-string-async`](https://www.npmjs.com/package/hyperscript-string-async) - An async/promisified version of hyperscript-string
 * [`hyperscript-helpers`](https://www.npmjs.com/package/hyperscript-helpers) - Terse syntax for hyperscript
 * [`hyperscript`](https://www.npmjs.com/package/hyperscript) - Create HyperText with JavaScript, on client or server.
 
@@ -55,18 +56,6 @@ Empty strings are left as is, e.g. `h('a', {href: ''}) => '<a href=""></a>'`, an
 | children | `String` or `Array` | The children for the HTML tag |
 
 Returns: `String`, the generated HTML.
-
-### `ha(selector[, attrs, children])`
-
-*A promisified version of the `h` function*
-
-| Name | Type | Description |
-|------|------|-------------|
-| selector | `String` or `Promise<String>` | Contains at least the HTML tag name |
-| attrs | `Object` or `Promise<Object>` or `Object<Promise>` | Attributes for the HTML tag |
-| children | `String` or `Array` or `Promise<String>` or `Promise<Array>` or `Array<Promise>` | The children for the HTML tag |
-
-Returns: `Promise<String>`, the generated HTML.
 
 ## License
 

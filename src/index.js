@@ -1,5 +1,4 @@
 'use strict';
-const all = require('promise-all');
 const arrify = require('arrify');
 const isPlainObject = require('is-plain-object');
 const classNames = require('classnames');
@@ -24,16 +23,4 @@ const h = (selector, attrs, children) => {
 	return render(parts.tag, attrs, children);
 };
 
-const ha = (selector, attrs, children) => {
-	return all({
-		selector: all(selector),
-		attrs: all(attrs),
-		children: all(children)
-	})
-	.then(res =>
-		h(res.selector, res.attrs, res.children)
-	);
-};
-
 module.exports = exports = h;
-h.ha = ha;

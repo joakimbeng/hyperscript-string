@@ -1,5 +1,5 @@
 import test from 'ava';
-import h, {ha} from '../src';
+import h from '../src';
 
 test('no tag, class or id', t => {
 	t.throws(() => h('', ['Hello world!']));
@@ -92,34 +92,3 @@ test('boolean properties', t => {
 </div>
 `.trim());
 });
-
-test('async component', async t => {
-	const item = (children) => ha('li.item', children);
-	const list = (classId, attrs) => {
-		const {
-			limit,
-			...props
-		} = attrs;
-		const rows = getRows(limit);
-		return ha(`ul${classId || ''}`, props, map(rows, row => item([row])));
-	};
-	const html = await list('.list', {limit: 3});
-	t.is(html, `
-<ul class="list">
-	<li class="item">Lorem ipsum 0</li>
-	<li class="item">Lorem ipsum 1</li>
-	<li class="item">Lorem ipsum 2</li>
-</ul>
-`.trim());
-});
-
-function getRows(length) {
-	return Promise.resolve(
-		Array.from({length})
-			.map((_, i) => `Lorem ipsum ${i}`)
-	);
-}
-
-function map(promise, fn) {
-	return promise.then(arr => Promise.all(arr.map(fn)));
-}
