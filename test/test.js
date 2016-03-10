@@ -92,3 +92,8 @@ test('boolean properties', t => {
 </div>
 `.trim());
 });
+
+test('doctype', t => {
+	const html = h('!doctype', {html: true});
+	t.is(html, '<!doctype html>');
+});

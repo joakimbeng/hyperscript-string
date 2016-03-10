@@ -3,7 +3,7 @@ const voidElements = require('void-elements');
 const arrify = require('arrify');
 
 module.exports = exports = function render(name, attrs, children) {
-	if (voidElements[name]) {
+	if (name === '!doctype' || voidElements[name]) {
 		return `<${name}${renderAttributes(attrs)}>`;
 	}
 	return `<${name}${renderAttributes(attrs)}>${renderChildren(children)}</${name}>`;
