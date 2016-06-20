@@ -1,13 +1,21 @@
 'use strict';
+const H = require('haitch').H;
 const voidElements = require('void-elements');
-const arrify = require('arrify');
 
-module.exports = exports = function render(name, attrs, children) {
-	if (name === '!doctype' || voidElements[name]) {
-		return `<${name}${renderAttributes(attrs)}>`;
+module.exports = exports = render;
+
+function render(tag, level) {
+	if (typeof tag === 'string') {
+		return tag;
 	}
-	return `<${name}${renderAttributes(attrs)}>${renderChildren(children)}</${name}>`;
-};
+	if (!(tag instanceof H)) {
+		throw new TypeError(`Expected string or Haitch tag but was: ${typeof tag}`);
+	}
+	if (tag.tagName === '!doctype' || voidElements[tag.tagName]) {
+		return `<${tag.tagName}${renderAttributes(tag.attributes)}>`;
+	}
+	return `<${tag.tagName}${renderAttributes(tag.attributes)}>${renderChildren(tag.children, level)}</${tag.tagName}>`;
+}
 
 function renderAttributes(attrs) {
 	attrs = Object.keys(attrs)
@@ -28,12 +36,12 @@ function renderAttributes(attrs) {
 	return '';
 }
 
-function renderChildren(children) {
-	children = arrify(children);
+function renderChildren(children, level) {
 	if (children.length === 0) {
 		return '';
-	} else if (children.length === 1) {
-		return children[0];
 	}
-	return `\n\t${children.join('\n\t')}\n`;
+	level = level || 0;
+	const indent = '\t'.repeat(level + 1);
+	const lastIndent = '\t'.repeat(level);
+	return `\n${indent}${children.map(child => render(child, level + 1)).join(`\n${indent}`)}\n${lastIndent}`;
 }

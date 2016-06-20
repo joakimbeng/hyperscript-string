@@ -1,4 +1,4 @@
-# hyperscript-string
+# haitch-html
 
 [![Build status][travis-image]][travis-url] [![NPM version][npm-image]][npm-url] [![XO code style][codestyle-image]][codestyle-url]
 
@@ -8,10 +8,10 @@ Goes hand in hand with [`hyperscript-helpers`](https://www.npmjs.com/package/hyp
 
 ## Installation
 
-Install `hyperscript-string` using [npm](https://www.npmjs.com/):
+Install `haitch-html` using [npm](https://www.npmjs.com/):
 
 ```bash
-npm install --save hyperscript-string
+npm install --save haitch-html
 ```
 
 ## Usage
@@ -19,13 +19,16 @@ npm install --save hyperscript-string
 ### Module usage
 
 ```javascript
-const h = require('hyperscript-string');
+const h = require('haitch-html');
 
-const html = h('ul.list', [
+const tag = h('ul.list', [
 	h('li.item', 'Lorem ipsum'),
 	h('li.item', {title: 'Second item'}, 'Dolor sit'),
 	h('li.item', 'Amet')
 ]);
+// an Haitch HTML tag object
+
+const html = h.html(tag);
 /*
 <ul class="list">
 	<li class="item">Lorem ipsum</li>
@@ -41,7 +44,8 @@ Empty strings are left as is, e.g. `h('a', {href: ''}) => '<a href=""></a>'`, an
 
 ## Related packages
 
-* [`hyperscript-string-async`](https://www.npmjs.com/package/hyperscript-string-async) - An async/promisified version of hyperscript-string
+* [`haitch-html-async`](https://www.npmjs.com/package/haitch-html-async) - An async/promisified version of haitch-html
+* [`haitch`](https://www.npmjs.com/package/haitch) - Create HTML tag objects with JavaScript
 * [`hyperscript-helpers`](https://www.npmjs.com/package/hyperscript-helpers) - Terse syntax for hyperscript
 * [`hyperscript`](https://www.npmjs.com/package/hyperscript) - Create HyperText with JavaScript, on client or server.
 
@@ -55,15 +59,15 @@ Empty strings are left as is, e.g. `h('a', {href: ''}) => '<a href=""></a>'`, an
 | attrs | `Object` | Attributes for the HTML tag |
 | children | `String` or `Array` | The children for the HTML tag |
 
-Returns: `String`, the generated HTML.
+Returns: `Object`, the generated HTML.
 
 ## License
 
 MIT © [Joakim Carlstein](http://joakim.beng.se)
 
-[npm-url]: https://npmjs.org/package/hyperscript-string
-[npm-image]: https://badge.fury.io/js/hyperscript-string.svg
-[travis-url]: https://travis-ci.org/joakimbeng/hyperscript-string
-[travis-image]: https://travis-ci.org/joakimbeng/hyperscript-string.svg?branch=master
+[npm-url]: https://npmjs.org/package/haitch-html
+[npm-image]: https://badge.fury.io/js/haitch-html.svg
+[travis-url]: https://travis-ci.org/joakimbeng/haitch-html
+[travis-image]: https://travis-ci.org/joakimbeng/haitch-html.svg?branch=master
 [codestyle-url]: https://github.com/sindresorhus/xo
 [codestyle-image]: https://img.shields.io/badge/code%20style-XO-5ed9c7.svg?style=flat

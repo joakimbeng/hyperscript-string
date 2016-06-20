@@ -1,48 +1,44 @@
 import test from 'ava';
-import h from '../src';
-
-test('no tag, class or id', t => {
-	t.throws(() => h('', ['Hello world!']));
-});
+import h, {html} from '../src';
 
 test('class', t => {
-	const html = h('div.container', ['Hello world!']);
-	t.is(html, '<div class="container">Hello world!</div>');
+	const str = html(h('div.container', ['Hello world!']));
+	t.is(str, '<div class="container">\n\tHello world!\n</div>');
 });
 
 test('multiple classes', t => {
-	const html = h('div.container.big', ['Hello world!']);
-	t.is(html, '<div class="container big">Hello world!</div>');
+	const str = html(h('div.container.big', ['Hello world!']));
+	t.is(str, '<div class="container big">\n\tHello world!\n</div>');
 });
 
 test('no tagname', t => {
-	const html = h('.container.big', ['Hello world!']);
-	t.is(html, '<div class="container big">Hello world!</div>');
+	const str = html(h('.container.big', ['Hello world!']));
+	t.is(str, '<div class="container big">\n\tHello world!\n</div>');
 });
 
 test('id', t => {
-	const html = h('div#container', ['Hello world!']);
-	t.is(html, '<div id="container">Hello world!</div>');
+	const str = html(h('div#container', ['Hello world!']));
+	t.is(str, '<div id="container">\n\tHello world!\n</div>');
 });
 
 test('class and id', t => {
-	const html = h('div.container#main', ['Hello world!']);
-	t.is(html, '<div id="main" class="container">Hello world!</div>');
+	const str = html(h('div.container#main', ['Hello world!']));
+	t.is(str, '<div id="main" class="container">\n\tHello world!\n</div>');
 });
 
 test('attributes', t => {
-	const html = h('div.container', {style: 'text-align: center'}, ['Hello world!']);
-	t.is(html, '<div style="text-align: center" class="container">Hello world!</div>');
+	const str = html(h('div.container', {style: 'text-align: center'}, ['Hello world!']));
+	t.is(str, '<div style="text-align: center" class="container">\n\tHello world!\n</div>');
 });
 
 test('no children', t => {
-	const html = h('div.container');
-	t.is(html, '<div class="container"></div>');
+	const str = html(h('div.container'));
+	t.is(str, '<div class="container"></div>');
 });
 
 test('multiple children', t => {
-	const html = h('div', ['Hello world!', 'And hi there, universe!']);
-	t.is(html, `
+	const str = html(h('div', ['Hello world!', 'And hi there, universe!']));
+	t.is(str, `
 <div>
 	Hello world!
 	And hi there, universe!
@@ -51,25 +47,29 @@ test('multiple children', t => {
 });
 
 test('nesting', t => {
-	const html = h('div', [
+	const str = html(h('div', [
 		h('div', 'Hello world!'),
 		h('div', 'And hi there, universe!')
-	]);
-	t.is(html, `
+	]));
+	t.is(str, `
 <div>
-	<div>Hello world!</div>
-	<div>And hi there, universe!</div>
+	<div>
+		Hello world!
+	</div>
+	<div>
+		And hi there, universe!
+	</div>
 </div>
 `.trim());
 });
 
 test('self closing tags', t => {
-	const html = h('div', [
+	const str = html(h('div', [
 		h('link', {rel: 'stylesheet', href: 'style.css'}),
 		h('hr'),
 		h('br')
-	]);
-	t.is(html, `
+	]));
+	t.is(str, `
 <div>
 	<link rel="stylesheet" href="style.css">
 	<hr>
@@ -79,12 +79,12 @@ test('self closing tags', t => {
 });
 
 test('boolean properties', t => {
-	const html = h('div', [
+	const str = html(h('div', [
 		h('input', {type: 'checkbox', checked: true}),
 		h('input', {type: 'checkbox', checked: false}),
 		h('input', {type: 'checkbox', checked: ''})
-	]);
-	t.is(html, `
+	]));
+	t.is(str, `
 <div>
 	<input type="checkbox" checked>
 	<input type="checkbox">
@@ -94,6 +94,6 @@ test('boolean properties', t => {
 });
 
 test('doctype', t => {
-	const html = h('!doctype', {html: true});
-	t.is(html, '<!doctype html>');
+	const str = html(h('!doctype', {html: true}));
+	t.is(str, '<!doctype html>');
 });

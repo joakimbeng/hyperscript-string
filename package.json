@@ -15,6 +15,7 @@
   },
   "keywords": [
     "hyperscript",
+    "haitch",
     "string",
     "helper",
     "html"
@@ -39,14 +40,12 @@
     "xo": "^0.12.1"
   },
   "dependencies": {
-    "arrify": "^1.0.1",
-    "classnames": "^2.2.3",
-    "is-plain-object": "^2.0.1",
     "void-elements": "^2.0.1"
   },
   "pj2md": {
     "related": [
       "hyperscript-string-async",
+      "haitch",
       "hyperscript-helpers",
       "hyperscript"
     ]
